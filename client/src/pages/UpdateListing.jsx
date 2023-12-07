@@ -164,7 +164,7 @@ const UpdateListing = () => {
             <h1 className='text-3xl font-semibold text-center my-7'>
                 Update a Listing
             </h1>
-            <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
+            <form onSubmit={handleSubmit} className='flex pb-3 flex-col sm:flex-row gap-4'>
                 <div className='flex flex-col gap-4 flex-1'>
                     <input
                         type='text'
