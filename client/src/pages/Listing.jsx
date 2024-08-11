@@ -49,27 +49,28 @@ const Listing = () => {
     }, [params.listingId]);
 
     return (
-        <main className='pb-28'>
+        <main className='pb-28 flex flex-col pt-5'>
             {loading && <p className='text-center my-7 text-2xl'>Loading...</p>}
             {error && (
                 <p className='text-center my-7 text-2xl'>Something went wrong!</p>
             )}
             {listing && !loading && !error && (
-                <div>
-                    <Swiper navigation>
+                <div className='max-w-6xl mx-auto flex flex-col relative'>
+                    <Swiper navigation className='w-full mx-auto'>
                         {listing.imageUrls.map((url) => (
-                            <SwiperSlide key={url}>
-                                <div
-                                className='h-[550px]'
+                            <SwiperSlide 
+                                key={url}
                                 style={{
-                                    background: `url(${url}) center no-repeat`,
-                                    backgroundSize: 'cover',
+                                    backgroundSize: 'contain',
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundPosition: 'center',
                                 }}
-                                ></div>
+                            >
+                                <img src={listing.imageUrls[0]} alt="iamge" className='w-full mx-auto h-100% justify-center object-cover' />
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div className='fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
+                    <div className='absolute top-5 right-5 z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer'>
                         <FaShare
                             className='text-slate-500'
                             onClick={() => {

@@ -40,14 +40,14 @@ const Home = () => {
             const data = await res.json();
             setSaleListings(data);
         } catch (error) {
-            log(error);
+            console.log(error);
         }
         };
         fetchOfferListings();
     }, []);
 
     return (
-        <div className='pb-28'>
+        <div className='pb-28 flex flex-col items-center'>
             {/* top */}
             <div className='flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto'>
                 <h1 className='text-slate-700 font-bold text-3xl lg:text-6xl'>
@@ -65,20 +65,13 @@ const Home = () => {
                     Let's get started...
                 </Link>
             </div>
-
+            <div className='flex flex-col max-w-6xl w-full mx-auto'>                
+            </div>
             {/* swiper */}
-            <Swiper navigation>
+            <Swiper navigation className='max-w-6xl w-full mx-auto'>
                 {offerListings && offerListings.length > 0 && offerListings.map((listing) => (
                     <SwiperSlide key={listing._id}>
-                        <div
-                            style={{
-                                background: `url(${listing.imageUrls[0]}) center no-repeat`,
-                                backgroundSize: 'cover',
-                                // objectFit: 'cover',
-                            }}
-                            className='h-[500px] justify-center'
-                            key={listing._id}
-                        ></div>
+                        <img src={listing.imageUrls[0]} alt="iamge" className='w-full mx-auto h-100% justify-center object-cover' />
                     </SwiperSlide>
                 ))}
             </Swiper>
